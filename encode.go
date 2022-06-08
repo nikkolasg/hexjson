@@ -1035,9 +1035,9 @@ type field struct {
 	nameBytes []byte                 // []byte(name)
 	equalFold func(s, t []byte) bool // bytes.EqualFold or equivalent
 
-	tag       bool
 	index     []int
 	typ       reflect.Type
+	tag       bool
 	omitEmpty bool
 	quoted    bool
 }
@@ -1076,7 +1076,7 @@ func typeFields(t reflect.Type) []field {
 	next := []field{{typ: t}}
 
 	// Count of queued names for current level and the next.
-	count := map[reflect.Type]int{}
+	var count map[reflect.Type]int
 	nextCount := map[reflect.Type]int{}
 
 	// Types already visited at an earlier level.

@@ -94,7 +94,6 @@ func equalFoldRight(s, t []byte) bool {
 			return false
 		}
 		t = t[size:]
-
 	}
 	if len(t) > 0 {
 		return false
