@@ -118,7 +118,7 @@ Input:
 		// Did the last read have an error?
 		// Delayed until now to allow buffer scan.
 		if err != nil {
-			if err == io.EOF {
+			if errors.Is(err, io.EOF) {
 				if dec.scan.step(&dec.scan, ' ') == scanEnd {
 					break Input
 				}
@@ -270,8 +270,10 @@ func (m *RawMessage) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-var _ Marshaler = (*RawMessage)(nil)
-var _ Unmarshaler = (*RawMessage)(nil)
+var (
+	_ Marshaler   = (*RawMessage)(nil)
+	_ Unmarshaler = (*RawMessage)(nil)
+)
 
 // A Token holds a value of one of these types:
 //

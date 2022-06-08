@@ -4,8 +4,8 @@ on:
     branches:
       - master
       - main
-      - 'release/**'
-  pull_request:
+    tags:
+    pull_request:
 
 concurrency:
   group: ci-${{ github.ref }}-tests
